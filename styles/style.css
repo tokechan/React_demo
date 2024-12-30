@@ -1,0 +1,13 @@
+body {
+    font-family: sans-serif;
+    color: #456
+}
+.input-area {
+    background-color: #c6e5d9;
+    border-radius: 9px;
+    border: none;
+}
+button {
+    border-radius: 9px;
+    border: none;
+}
