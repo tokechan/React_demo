@@ -210,3 +210,241 @@ const message5 = `my name is ${name} and also my age is ${age}.`;
 console.log(message5); // my name is toke and also my age is 38.
 
 
+/**
+ * デフォルト値（引数、分割代入）
+ */
+const sayHello = (name) => console.log(`Hello, ${name}san!`);
+sayHello("toke"); // Hello, toke!
+sayHello(); // Hello, undefinedsan!
+
+//デフォルト値を設定 引数にデフォルト値を設定することができる
+const sayHello2 = (name = "guset") => console.log(`Hello, ${name}san!`);
+sayHello2("toke"); // Hello, toke!
+sayHello2(); // Hello, guest!
+
+//分割代入でデフォルト値を設定
+const myProfile = {
+    age: 38
+};
+const { age, name = "guest" } = myProfile;
+console.log(age); // 38
+console.log(name); // guest デフォルト値が設定されている
+
+/**
+ * オブジェクトの省略記法
+ */
+Reactでかなりよく出てくるので覚えておくこと
+const name = "toke";
+const age = 38;
+
+const myProfile = {
+    name: name,
+    age: age,
+};
+console.log(myProfile); // {name: "toke", age: 38}
+
+//省略記法 キーと変数名が同じ場合は省略できる
+const myProfile2 = {
+     name, 
+     age 
+};
+console.log(myProfile2); // {name: "toke", age: 38}
+
+/**
+ * スプレッド演算子　...　ドットを３つつける
+ */
+
+//配列のスプレッド演算子　配列の展開 配列の中身を順番に展開してくれる
+const arr1 = [1, 2];
+console.log(arr1); // [1, 2]
+console.log(...arr1); // 1 2
+
+const sumFunc = (num1, num2) => console.log(num1 + num2);
+sumFunc(arr1[0], arr1[1]); // 3
+
+//スプレッド演算子を使うと配列の中身を展開してくれる
+const sumFunc2 = (num1, num2) => console.log(num1 + num2);
+sumFunc2(...arr1); // 3
+
+//まとめる
+const arr2 = [1, 2, 3, 4, 5];
+const [num1, num2, ...arr3] = arr2;
+console.log(num1); // 1  一つのみ
+console.log(num2); // 2　一つのみ
+console.log(arr3); // [3, 4, 5]　まとめて取得
+
+//配列のコピー、結合　　これがよく使うものかもしれない
+const arr4 = [10, 20];
+const arr5 = [30, 40];
+
+const arr6 = [...arr4];
+console.log(arr6); // [10, 20] コピー
+
+const arr7 = [...arr4, ...arr5];    
+console.log(arr7); // [10, 20, 30, 40] 結合
+
+//参照渡し　オブジェクトの場合は注意 
+const arr8 = arr4;
+arr8[0] = 100;
+console.log(arr8); // [100, 20] 参照渡し
+console.log(arr4); // [100, 20] 参照渡し    
+
+//オブジェクトのスプレッド演算子　オブジェクトの展開 オブジェクトの中身を展開してくれる
+const obj1 = {
+    name: "toke",
+    age: 38,
+};
+console.log(obj1); // {name: "toke", age: 38}
+console.log(...obj1); // toke 38
+
+
+/*
+ * map,filterを使った配列の処理
+ */
+//通常のfor文
+const nameArray = ["toke", "yuta", "kazuma", "yuki"];
+for (let index = 0; index < nameArr.length; index++>) {
+    console.log(nameArr[index]);
+}
+//toke yuta kazuma yuki　順番に出力される
+
+//mapを使った配列の処理
+nameArray.map((name) => {
+    console.log(name);
+});
+//toke yuta kazuma yuki　順番に出力される
+
+nameArray.map(name => console.log(name));
+//toke yuta kazuma yuki　順番に出力される
+//必ずしも返却値を受け取る必要はないので、アロー関数で処理するのもよくある
+//シンプルに記述できるので覚えておくこと
+
+
+//mapを使った配列の処理の特徴
+//mapは元の配列を変更しない
+//mapは新しい配列を返す 下の例はnameArrayを変更していない
+nameArr2という新しい配列を作成している
+
+
+const nameArr2 = nameArray.map((name) => {
+    return name;
+});
+console.log(nameArr2); // ["toke", "yuta", "kazuma", "yuki"]
+
+//filterを使った配列の処理
+const numArray = [1, 2, 3, 4, 5];
+const newNumarr = numArray.filter((num) => {
+    return num % 2 === 1;
+});
+console.log(newNumarr); // [1, 3, 5]
+
+//配列のループと言えば何番目の要素か？というのを取得するのが一般的
+//for文の場合
+const nameArr2 = ["toke", "yuta", "kazuma", "yuki"];
+for (let index = 0; index < nameArr2.length: index++) {
+    console.log(${index + 1}番目は${nameArr2[index]}です);
+}
+//1番目はtokeです。2番目はyutaです。3番目はkazumaです。4番目はyukiです。
+
+//mapを使った場合
+nameArr2.map((name, index) => {
+    console.log(${index + 1}番目は${name}です);
+});
+//1番目はtokeです。2番目はyutaです。3番目はkazumaです。4番目はyukiです。
+
+//mapを使ったちょっと実践的な処理
+//tokeさんとそれ以外の人を区別して表示したいとき
+//なので、if文を使ってtokeさんの場合はtokeと表示し、それ以外の人はnameさんと表示する
+
+const nameArr3 = ["toke", "yuta", "kazuma", "yuki"];
+
+const newNameArr2 = nameArr3.map((name) => {
+    if(name === "toke") {
+        return "toke";
+    } else {
+        return `${name}さん`;
+    }
+});
+console.log(newNameArr2); // ["toke", "yutaさん", "kazumaさん", "yukiさん"]
+
+//mapはReactで画面表示するときによく使う    
+//ループしながら配列の中身を表示するときによく使う
+//画面の出し分け、UIの出し分けの中でmapでループしながら表示することがよくある
+
+//三項演算子　Reactでよく使うが多用しすぎると可読性が下がるので注意
+//三項演算子はif文のシンプルな記述方法
+//if文の条件式 ? 条件式がtrueの場合の処理 : 条件式がfalseの場合の処理
+
+const val5 =1 > 0 ? "true desu" : "false desu";
+console.log(val5); // true desu
+
+//特定の条件を反転させて表示させる時によく使う
+//ある変数に新しく定義して中で、こういう条件の時はこうしけど、それ以外の時はこうしたいという時に一行で書けるのでよく使う
+
+const num = 1300;
+console.log(num.toLocaleString()); 
+// 1,300  数値に対して、３桁くぎりにカンマをつけて表示する
+const formattedNum = typeof num === 'number' ? num.toLocaleString() : "数値を入力してください";
+console.log(formattedNum); // 1,300
+
+const checSum = (num1, num2) => {
+    return num1 + num2 > 100 ? "100を超えています" : "許容範囲内です";
+};
+console.log(checSum(50, 60)); // 100を超えています
+console.log(checSum(50, 40)); // 許容範囲内です
+
+関数の結果とかでリターンしてワンラインで書くときによく使う
+
+/*
+ * 論理演算子の本当の意味を知ろう　
+ */
+
+//JSではtruty falsyという概念がある
+//暗黙的にどちらかに変換されるものがあるので覚えておくほうがいい
+//trueとfalseは論理演算子でよく使われる 
+
+//truty falsyの例
+//true : 1, -1, "0", "false", [], {}, function(){}
+//false : 0, "", null, undefined, NaN
+
+const val6 = "ABC";
+if (val6) {
+    console.log("val6はtruthyです");
+} else {
+    console.log("val6はfalsyです");
+}
+//val6はtruthyです
+
+const flag1 = true;
+const flag2 = true;
+
+if (flag1 || flag2) {
+    console.log("1か2はtrueになります");
+}
+if (flag1 && flag2) {
+    console.log("1も2もtrueになります");
+}
+
+//論理演算子は&&と||と!がある
+//&&はAND演算子　両方の条件がtrueの場合はtrueを返す
+//||はOR演算子　片方の条件がtrueの場合はtrueを返す
+//!はNOT演算子　条件がtrueの場合はfalseを返す、falseの場合はtrueを返す
+
+//論理演算子の注意点
+//&&は左辺がfalseの場合は右辺を評価しない
+//||は左辺がtrueの場合は右辺を評価しない
+
+// ||は左辺がtrueの場合は右辺を評価しないので、右辺が評価されない
+//短絡評価や短絡演算というふうに呼ばれる
+const num = undefined;
+const fee = num || "金額未設定です";
+console.log(fee); // 金額未設定です
+
+//&&は左辺がfalseの場合は右辺を評価しないので、右辺が評価されない
+//短絡評価や短絡演算というふうに呼ばれる
+const num2 = 100;
+const fee2 = num2 || "金額未設定です";
+console.log(fee2); // 100
+ 
+
+
