@@ -1,66 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO-js app</title>
 </head>
 <body>
-    <div class="input-area">
-        <input class="text" id="todo-input" placeholder="TODOを入力">
-        <button>追加</button>
+    <div class="todo-input-area">
+        <input class="todo-input" id="todo-input" placeholder="TODOを入力">
+        <button id="add-button">追加</button>
     </div>
-    <div>
-        <p>TODOリスト</p>
-        <ul>
-            <li>
-                <div>
-                    <p>TODO1</p>
-                    <button>完了</button>
-                    <button>削除</button>
-                </div>
+    
+    <div class="todo-list-area">
+        <p class="area-title">TODOリスト</p>
+        <ul id="todo-list">
+            <li class="todo-item">
+                <span>TODO1</span>
+                <button class="complete-button">完了</button>
+                <button class="delete-button">削除</button>
             </li>
-            <li>
-                <div>
-                    <p>TODO2</p>
-                    <button>完了</button>
-                    <button>削除</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO3</p>
-                    <button>完了</button>
-                    <button>削除</button>
-                </div>
-            </li>
+            <!-- 他のTODOアイテムも同様に -->
         </ul>
     </div>
-    <div>
-        <p>完了リスト</p>
-        <ul>
-            <li>
-                <div>
-                    <p>TODO1</p>
-                    <button>戻す</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO2</p>
-                    <button>戻す</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO3</p>
-                    <button>戻す</button>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div></div>
-    <script src="/src/index.mjs" type="module"></script>
 
+    <div class="complete-area">
+        <p class="area-title">完了リスト</p>
+        <ul id="complete-list">
+            <li class="complete-item">
+                <span>TODO1</span>
+                <button class="return-button">戻す</button>
+            </li>
+            <!-- 他の完了アイテムも同様に -->
+        </ul>
+    </div>
+
+    <script src="/src/index.mjs" type="module"></script>
 </body>
 </html>

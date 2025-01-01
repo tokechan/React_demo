@@ -2,12 +2,47 @@ body {
     font-family: sans-serif;
     color: #456
 }
-.input-area {
-    background-color: #c6e5d9;
+input {
     border-radius: 9px;
     border: none;
+    padding: 6px 16px;
 }
 button {
     border-radius: 9px;
     border: none;
+    padding: 4px 16px;
+    margin: 8px 2px
+}
+
+button:hover {
+    background-color: #456;
+    color: #fff;
+    cursor: pointer;
+}
+.input-area {
+    background-color: #c6e5d9;
+    width: 400px;
+    height: 30px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 9px;
+    border: none;
+}
+.incomplete-area {
+    border: 2px solid #aacfd8;
+    background-color: rgb(180, 135, 69);
+    width: 400px;
+    min-height: 200px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 9px;
+}
+.complete-area {
+    border: 2px solid #aacfd8;
+    background-color: rgb(180, 135, 69);
+    width: 400px;
+    min-height: 200px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 9px;
 }
