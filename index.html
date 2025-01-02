@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,60 +7,36 @@
 </head>
 <body>
     <div class="input-area">
-        <input class="text" id="todo-input" placeholder="TODOを入力">
-        <button>追加</button>
+        <input id="add-text" placeholder="TODOを入力">
+        <button id="add-button">追加</button>
     </div>
-    <div>
-        <p>TODOリスト</p>
-        <ul>
+    
+    <div class="incomplete-area">
+        <p class="title">未完了のTODO</p>
+        <ul id="incomplete-list">
             <li>
-                <div>
-                    <p>TODO1</p>
-                    <button>完了</button>
-                    <button>削除</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO2</p>
-                    <button>完了</button>
-                    <button>削除</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO3</p>
+                <div class="list-row">
+                    <p class="todo-item">TODO1</p>
                     <button>完了</button>
                     <button>削除</button>
                 </div>
             </li>
         </ul>
     </div>
-    <div>
-        <p>完了リスト</p>
-        <ul>
-            <li>
-                <div>
-                    <p>TODO1</p>
-                    <button>戻す</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO2</p>
-                    <button>戻す</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p>TODO3</p>
-                    <button>戻す</button>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div></div>
-    <script src="../src/index.mjs" type="module"></script>
 
+    <div class="complete-area">
+        <p class="title">完了のTODO</p>
+        <ul id="complete-list">
+            <li>
+                <div class="list-row">
+                    <p class="todo-item">TODO1</p>
+                    <button>戻す</button>
+                </div>
+            </li>
+            <!-- 他の完了アイテムも同様に -->
+        </ul>
+    </div>
+
+    <script src="/src/index.mjs" type="module"></script>
 </body>
 </html>
